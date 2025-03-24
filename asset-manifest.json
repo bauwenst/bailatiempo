@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/bailatiempo/static/css/main.53408c10.css",
-    "main.js": "/bailatiempo/static/js/main.f7c28536.js",
+    "main.css": "/bailatiempo/static/css/main.a92eede8.css",
+    "main.js": "/bailatiempo/static/js/main.f0385d7e.js",
     "static/js/453.97575c56.chunk.js": "/bailatiempo/static/js/453.97575c56.chunk.js",
     "index.html": "/bailatiempo/index.html",
-    "main.53408c10.css.map": "/bailatiempo/static/css/main.53408c10.css.map",
-    "main.f7c28536.js.map": "/bailatiempo/static/js/main.f7c28536.js.map",
+    "main.a92eede8.css.map": "/bailatiempo/static/css/main.a92eede8.css.map",
+    "main.f0385d7e.js.map": "/bailatiempo/static/js/main.f0385d7e.js.map",
     "453.97575c56.chunk.js.map": "/bailatiempo/static/js/453.97575c56.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.53408c10.css",
-    "static/js/main.f7c28536.js"
+    "static/css/main.a92eede8.css",
+    "static/js/main.f0385d7e.js"
   ]
 }
