@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# BailaTiempo
+*BailaTiempo* is a web app with timers that track each genre played at a dance social so far, so that the DJ can balance the genres better.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How this was made
+### Step 1: ChatGPT Canvas
+I asked ChatGPT to design me a web app with the basic features I wanted. I then iterated on it for several nights (because of quota) until all the bugs were ironed out.
 
-## Available Scripts
+### Step 2: Node, React, Tailwind
+ChatGPT Canvas writes and edits a JavaScript code file, even though it can visualise it as HTML with special CSS classes. The secret is that it loads Tailwind CSS to have a kit of styles readily available to it.
 
-In the project directory, you can run:
+I used [this tutorial](https://github.com/gitname/react-gh-pages/tree/master?tab=readme-ov-file#tutorial) to create my app. In short:
+1. One-time install: get `node` and `npm`. I did it with an installer and also had to change Powershell's execution policy to `RemoteSigned` to get `npm` to work.
+2. Create fully empty repo on GitHub. No `README`, no `LICENSE`, no `.gitignore`. The name of this repo will be the path where GitHub deploys the app. Unfortunately, that means you can't deploy to a subpath, since you can't have slashes in repo names.
+3. Run `npx create-react-app bailatiempo` and `cd bailatiempo`. You now have a Node app that is also a Git repo.
+4. Run `npm install gh-pages --save-dev`. This adds GitHub Pages support.
+5. Run `npm install -D tailwindcss@3 postcss autoprefixer`. This adds a [working](https://github.com/tailwindlabs/tailwindcss/issues/15942#issuecomment-2694611579) version of Tailwind CSS.
+6. Run `npx tailwindcss init -p`. This generates Tailwind's configuration files.
+7. In `tailwind.config.json`, add `"./index.html", "./src/**/*.{js,ts,jsx,tsx}"` to the `"content"` list. Why? Because ChatGPT told me when I asked how to recreate Canvas locally.
+8. In `src/index.css`, paste over the existing content with
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-### `npm start`
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+```
+9. In `package.json`, add the top-level field `"homepage": "https://bauwenst.github.io/bailatiempo"` and add the two scripts `"predeploy": "npm run build"` and `"deploy": "gh-pages -d build"`. **Note:** It is not this `homepage` field that determines where you will deploy. It is merely you telling the build system where it should assume deployment for constructing paths. GitHub determines the path you publish to and it will always be `/reponame`.
+10. Run `git remote add origin https://bauwenst@github.com/bauwenst/bailatiempo.git`. This primes the auto-pusher to GitHub Pages.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+All that remained was to copy ChatGPT's code into `src/App.jsx` (the `x` is because React embeds raw HTML into the JavaScript, which is eXtended syntax).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Step 3: Deployment to GitHub
+You can test your app locally with `npm run start`.
 
-### `npm test`
+Running `npm run deploy` will build the app (this will take a while), push the resulting artifacts to `gh-pages`, and then GitHub will make it available at its URL.
+When you `git commit` anything yourself, that happens to the `master` branch.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Origin of the name
+In Spanish, *baila!* means "dance!" and *tiempo* means "time", so BailaTiempo is how someone who does not speak Spanish could translate "dance time" (as in "it's time to dance", but also "the time that has been danced"). (In reality, it would be something like *duración del baile*, but I digress.) 
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+It's also a play on the phrase *a tiempo* which means "on time" in common parlance, and in dancing means "starting on 1", which is how casino, LA salsa, bachata and kizomba are all danced.

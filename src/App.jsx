@@ -68,8 +68,8 @@ export default function App() {
       <div className={`h-full flex flex-col ${splitSalsa ? "w-1/3" : "w-1/3"}`}>
         {splitSalsa ? (
           <>
-            <TimerPlane title="Salsa 1" color="red" isActive={active === "salsa1"} onClick={() => { setActive("salsa1"); setLastActiveSalsa("salsa1"); }} time={times.salsa1} totalTime={totalTime} fullHeight={false} />
-            <TimerPlane title="Salsa 2" color="red" isActive={active === "salsa2"} onClick={() => { setActive("salsa2"); setLastActiveSalsa("salsa2"); }} time={times.salsa2} totalTime={totalTime} fullHeight={false} />
+            <TimerPlane title="LA" color="red" isActive={active === "salsa1"} onClick={() => { setActive("salsa1"); setLastActiveSalsa("salsa1"); }} time={times.salsa1} totalTime={totalTime} fullHeight={false} />
+            <TimerPlane title="Cuban" color="red" isActive={active === "salsa2"} onClick={() => { setActive("salsa2"); setLastActiveSalsa("salsa2"); }} time={times.salsa2} totalTime={totalTime} fullHeight={false} />
           </>
         ) : (
           <TimerPlane title="Salsa" color="red" isActive={active === "salsa1" || active === "salsa2"} onClick={() => setActive(lastActiveSalsa)} time={salsaTotal} totalTime={totalTime} />
